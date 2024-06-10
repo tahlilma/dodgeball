@@ -22,21 +22,21 @@ function main() {
   let score = 0;
 
   const soundtrack = new Howl({
-    src: ["./assets/gameplay.mp3"],
+    src: ["/gameplay.mp3"],
     loop: true,
     html5: true,
   });
 
   soundtrack.play();
 
-  const player = Sprite.from("./assets/mc.png");
+  const player = Sprite.from("/mc.png");
   player.anchor.set(0.5);
   player.x = app.view.height / 2;
   player.y = app.view.width / 2;
   app.stage.addChild(player);
 
   function spawnEnemy() {
-    const enemy = Sprite.from("./assets/enemy.png");
+    const enemy = Sprite.from("/enemy.png");
     enemy.anchor.set(0.5);
 
     const randomizer = Math.floor(Math.random() * 4);
@@ -94,7 +94,7 @@ function main() {
     soundtrack.stop();
 
     const gameOverSoundtrack = new Howl({
-      src: ["./assets/gameover.mp3"],
+      src: ["/gameover.mp3"],
       loop: true,
       html5: true,
     });
@@ -106,7 +106,7 @@ function main() {
     app.stage.removeChildren();
     gameLoop.remove();
 
-    const loser = Sprite.from("./assets/mc.png");
+    const loser = Sprite.from("/mc.png");
     loser.anchor.set(0.5);
     loser.x = app.view.height / 2;
     loser.y = app.view.width / 2 + 50;
