@@ -5,6 +5,12 @@ const app = new Application({ height: 500, width: 500 });
 document.body.appendChild(app.view);
 
 const button = document.getElementById("start");
+const scoreText = document.getElementById("score");
+let highscore = localStorage.getItem("highscore");
+
+if (!highscore) localStorage.setItem("highscore", 0);
+
+scoreText.innerHTML = `Current High Score: <b>${highscore}</b>`;
 
 function main() {
   button.disabled = true;
@@ -78,6 +84,11 @@ function main() {
   }
 
   function gameOver() {
+    if (score > highscore) {
+      localStorage.setItem("highscore", score);
+      scoreText.innerHTML = `New High Score: <b>${score}</b>`;
+    }
+
     button.innerHTML = "Refresh the page to play again";
 
     soundtrack.stop();
