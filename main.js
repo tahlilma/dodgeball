@@ -12,12 +12,12 @@ if (!localStorage.getItem("highscore")) localStorage.setItem("highscore", 0);
 let highscore = localStorage.getItem("highscore");
 scoreText.innerHTML = `Current High Score: <b>${highscore}</b>`;
 
+const PLAYER_SPEED = 10;
+const ENEMY_SPEED = 5;
+const SPAWN_RATE = 0.5;
+
 function main() {
   button.disabled = true;
-
-  const PLAYER_SPEED = 10;
-  const ENEMY_SPEED = 5;
-  const SPAWN_RATE = 0.5;
 
   let score = 0;
 
@@ -188,6 +188,12 @@ function main() {
     }
   });
 }
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && button.disabled === false) {
+    main();
+  }
+});
 
 button.onclick = () => {
   main();
