@@ -6,10 +6,10 @@ document.body.appendChild(app.view);
 
 const button = document.getElementById("start");
 const scoreText = document.getElementById("score");
+
+if (!localStorage.getItem("highscore")) localStorage.setItem("highscore", 0);
+
 let highscore = localStorage.getItem("highscore");
-
-if (!highscore) localStorage.setItem("highscore", 0);
-
 scoreText.innerHTML = `Current High Score: <b>${highscore}</b>`;
 
 function main() {
